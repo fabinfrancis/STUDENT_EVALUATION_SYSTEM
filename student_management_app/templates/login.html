@@ -1,0 +1,127 @@
+{% load static %}
+
+{% block content %}
+<head>
+  <style>
+    body {
+
+        background-image: url("{% static 'dist/img/1651818153_activities_20220117_112616.jpeg' %}");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+
+    .login-box {
+        max-width: 400px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+    }
+
+    .login-box .login-logo {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .login-box .card-body {
+        padding: 0;
+    }
+
+    .login-box .login-box-msg {
+        margin: 0;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .login-box .form-control {
+        border-radius: 5px;
+        padding: 10px;
+        border: 1px solid #dddddd;
+        margin-bottom: 20px;
+    }
+
+    .login-box .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        border-radius: 5px;
+        padding: 10px;
+        font-weight: bold;
+    }
+
+    .login-box .btn-primary:hover {
+        background-color: #0069d9;
+        border-color: #0062cc;
+    }
+  </style>
+</head>
+
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="{% url 'login' %}"><b>Student </b>Internal  Assessment System</a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">Sign in to Student Internal  Assessment System</p>
+
+                <form action="{% url 'doLogin' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Email" name="email">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="Password" name="password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                    </div>
+
+                    {% comment %} <div class="col-12 text-center">
+                    <a href="{% url 'password_reset' %}">Reset Password</a>
+                    </div>  {% endcomment %}
+
+                    {% comment %} Display Messages {% endcomment %}
+                    {% if messages %}
+
+
+          <div class="col-12">
+            {% for message in messages %}
+              {% if message.tags == "error" %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                  {{ message }}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          <!-- /.col -->
+        </div>
+      </form>
+
+
+  </div>
+</div>
+<!-- /.login-box -->
+
+{% endblock %}

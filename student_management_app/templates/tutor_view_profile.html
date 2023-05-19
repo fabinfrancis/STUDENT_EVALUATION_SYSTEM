@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Sidebar</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+		}
+		.sidebar {
+			background-color: #333;
+			color: #fff;
+			width: 200px;
+			height: 100%;
+			position: fixed;
+			top: 0;
+			left: 0;
+			padding: 20px;
+		}
+		.sidebar ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		.sidebar li {
+			margin-bottom: 10px;
+		}
+		.sidebar a {
+			color: #fff;
+			text-decoration: none;
+			display: block;
+			padding: 10px;
+			border-radius: 5px;
+			transition: background-color 0.3s ease;
+		}
+		.sidebar a:hover {
+			background-color: #555;
+		}
+		.main {
+			margin-left: 200px;
+			padding: 20px;
+		}
+        .container {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+            background-color: #fff;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+        th {
+            background-color: #f5f5f5;
+        }
+	</style>
+</head>
+<body>
+	<div class="sidebar">
+		<ul>
+			<li><a href="{% url 'logout_user' %}">Home</a></li>
+          	<li><a href="{% url 'profile_tutor' %}">Profile</a></li>
+			<li><a href="{% url 'view_tutor' %}">View Result</a></li>
+		</ul>
+	</div>
+    <div class="main">
+		<div class="container">
+			<h1>My Profile</h1>
+			<div style="overflow-x:auto;">
+				<table>
+					<tbody>
+						<tr>
+							<td><strong>First Name:</strong></td>
+							<td>{{ user.first_name }}</td>
+						</tr>
+						<tr>
+							<td><strong>Last Name:</strong></td>
+							<td>{{ user.last_name }}</td>
+						</tr>
+						<tr>
+							<td><strong>Username:</strong></td>
+							<td>{{ user.username }}</td>
+						</tr>
+						<tr>
+							<td><strong>Email:</strong></td>
+							<td>{{ user.email }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

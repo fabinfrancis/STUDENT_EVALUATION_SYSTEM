@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Sidebar</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+		}
+		.sidebar {
+			background-color: #333;
+			color: #fff;
+			width: 200px;
+			height: 100%;
+			position: fixed;
+			top: 0;
+			left: 0;
+			padding: 20px;
+		}
+		.sidebar ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		.sidebar li {
+			margin-bottom: 10px;
+		}
+		.sidebar a {
+			color: #fff;
+			text-decoration: none;
+			display: block;
+			padding: 10px;
+			border-radius: 5px;
+			transition: background-color 0.3s ease;
+		}
+		.sidebar a:hover {
+			background-color: #555;
+		}
+		.main {
+			margin-left: 200px;
+			padding: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="sidebar">
+		<ul>
+			<li><a href="{% url 'logout_user' %}">Home</a></li>
+          			<li><a href="{% url 'profile_tutor' %}">Profile</a></li>
+
+			<li><a href="{% url 'view_tutor' %}">View result</a></li>
+
+		</ul>
+	</div>
+    <center>
+	<div class="main">
+		<h1>Internal mark assesment</h1>
+		<p>Tutor dashboard.</p>
+		<div style="overflow-x:auto;">
+                            <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+  </style>
+</head>
+
+
+
+<div class="container">
+
+    <br>
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+<div class="col-md-12">
+                          <div style="overflow-x:auto;">
+                            <form action="" >
+                              {% csrf_token %}
+                              <div class="row">
+                                <div class="col-12">
+                                  <div class="card">
+                                    <div class="card-header" style="background-color: #17a2b8;color: white;">
+                                      <h3 class="card-title">Tutors of corresponding students</h3>
+
+                                      <!-- <div class="card-tools">
+                                        <div class="input-group input-group-sm" style="width: 150px;">
+                                          <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                                          <div class="input-group-append">
+                                            <button type="submit" class="btn btn-default">
+                                              <i class="fas fa-search"></i>
+                                            </button>
+                                          </div>
+                                        </div>
+                                      </div> -->
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body table-responsive p-0">
+                                      <table class="table table-hover text-nowrap">
+                                        <thead>
+
+                                          <tr>
+                                            <th>Tutor Name</th>
+                                            <th>Course</th>
+                                              <th>Student</th>
+                                              <th>Student Mark</th>
+
+
+
+
+
+                                          </tr>
+
+                                        </thead>
+                                        {% for tutor in tutor %}
+
+                                          <tr>
+                                            <td> {{tutor.tutor_name}}</td>
+                                            <td> {{tutor.course_id}}</td>
+                                               <td> {{tutor.student_id}}</td>
+                                              <td><a  href="{% url 'view_mark' tutor.student_id.id  %}"><span class="btn btn-primary btn-book">View Marks</span></a></td>
+
+
+
+
+                                          {% endfor %}
+
+                                          </tr>
+
+
+                                      </table>
+                                    </div>
+                                    <!-- /.card-body -->
+                                  </div>
+                                  <!-- /.card -->
+                                </div>
+                              </div>
+                          </form>
+                          </div>
+                    </div>
+        </tr>
+    </div>
+    <table class="table table-hover" id="dev-table">
+
+
+	</div>
+      </center>
+</body>
+</html>
